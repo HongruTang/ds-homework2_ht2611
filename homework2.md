@@ -263,7 +263,7 @@ data6=read_csv("./data/unemployment.csv")
     ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 
 ``` r
-data6=pivot_longer(data6,Jan:Dec,names_to="month",values_to = "close")%>%
+data6=pivot_longer(data6,Jan:Dec,names_to="month",values_to = "percentage unemployment")%>%
   janitor::clean_names()
 final_data2=full_join(data3, data5)
 ```
@@ -274,20 +274,20 @@ final_data2=full_join(data3, data5)
 final_data3=full_join(final_data2,data6)
 ```
 
-    ## Joining, by = c("year", "month", "close")
+    ## Joining, by = c("year", "month")
 
 ``` r
 summary(final_data3)
 ```
 
     ##       year         month              gov_gop         sen_gop    
-    ##  Min.   :1947   Length:1639        Min.   :12.00   Min.   :32.0  
+    ##  Min.   :1947   Length:895         Min.   :12.00   Min.   :32.0  
     ##  1st Qu.:1964   Class :character   1st Qu.:18.00   1st Qu.:42.0  
     ##  Median :1981   Mode  :character   Median :22.00   Median :46.0  
     ##  Mean   :1981                      Mean   :22.48   Mean   :46.1  
     ##  3rd Qu.:1998                      3rd Qu.:28.00   3rd Qu.:51.0  
     ##  Max.   :2015                      Max.   :34.00   Max.   :56.0  
-    ##                                    NA's   :817     NA's   :817   
+    ##                                    NA's   :73      NA's   :73    
     ##     rep_gop         gov_dem        sen_dem         rep_dem   
     ##  Min.   :141.0   Min.   :17.0   Min.   :44.00   Min.   :188  
     ##  1st Qu.:176.0   1st Qu.:22.0   1st Qu.:48.00   1st Qu.:211  
@@ -295,18 +295,18 @@ summary(final_data3)
     ##  Mean   :194.9   Mean   :27.2   Mean   :54.41   Mean   :245  
     ##  3rd Qu.:222.0   3rd Qu.:32.0   3rd Qu.:58.00   3rd Qu.:268  
     ##  Max.   :253.0   Max.   :41.0   Max.   :71.00   Max.   :301  
-    ##  NA's   :817     NA's   :817    NA's   :817     NA's   :817  
-    ##   president             close       
-    ##  Length:1639        Min.   :   2.5  
-    ##  Class :character   1st Qu.:   5.6  
-    ##  Mode  :character   Median :   9.9  
-    ##                     Mean   : 237.0  
-    ##                     3rd Qu.: 131.3  
-    ##                     Max.   :2107.4  
-    ##                     NA's   :42
+    ##  NA's   :73      NA's   :73     NA's   :73      NA's   :73   
+    ##   president             close         percentage_unemployment
+    ##  Length:895         Min.   :  17.05   Min.   : 2.50          
+    ##  Class :character   1st Qu.:  83.73   1st Qu.: 4.70          
+    ##  Mode  :character   Median : 138.53   Median : 5.60          
+    ##                     Mean   : 474.89   Mean   : 5.83          
+    ##                     3rd Qu.: 941.79   3rd Qu.: 6.90          
+    ##                     Max.   :2107.39   Max.   :10.80          
+    ##                     NA's   :108       NA's   :85
 
 Data3 has 822 observations of 9 variables, it has variables such as
 gov_gop and president, Data5 has 787 observations of 3 variables. Data6
 has 816 observations of 3 variables. Data5 and Data6 have the same
-variables. The final_data3 has 1639 observations of 10 variables. The
+variables. The final_data3 has 1639 observations of 11 variables. The
 range of year is 68. The key variables are year, month.

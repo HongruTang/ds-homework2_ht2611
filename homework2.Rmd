@@ -130,10 +130,10 @@ data5=data4%>%
 ```
 ```{r}
 data6=read_csv("./data/unemployment.csv")
-data6=pivot_longer(data6,Jan:Dec,names_to="month",values_to = "close")%>%
+data6=pivot_longer(data6,Jan:Dec,names_to="month",values_to = "percentage unemployment")%>%
   janitor::clean_names()
 final_data2=full_join(data3, data5)
 final_data3=full_join(final_data2,data6)
 summary(final_data3)
 ```
-Data3 has 822 observations of 9 variables, it has variables such as gov_gop and president, Data5 has 787 observations of 3 variables. Data6 has 816 observations of 3 variables. Data5 and Data6 have the same variables. The final_data3 has 1639 observations of 10 variables. The range of year is 68. The key variables are year, month.
+Data3 has 822 observations of 9 variables, it has variables such as gov_gop and president, Data5 has 787 observations of 3 variables. Data6 has 816 observations of 3 variables. Data5 and Data6 have the same variables. The final_data3 has 1639 observations of 11 variables. The range of year is 68. The key variables are year, month.
